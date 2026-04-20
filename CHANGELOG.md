@@ -1,3 +1,10 @@
+# [0.2.0](https://github.com/terraform-hc-modules/terraform-hcloud-compute/compare/v0.1.0...v0.2.0) (2026-04-20)
+
+
+### Features
+
+* add pre-commit, semantic-release, and improve examples ([062e365](https://github.com/terraform-hc-modules/terraform-hcloud-compute/commit/062e365494a97f3276b4189dd505621c62be2980))
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
