@@ -1,3 +1,10 @@
+# [0.3.0](https://github.com/terraform-hc-modules/terraform-hcloud-compute/compare/v0.2.1...v0.3.0) (2026-04-20)
+
+
+### Features
+
+* add validations, richer outputs, docs, examples and tests ([f680da6](https://github.com/terraform-hc-modules/terraform-hcloud-compute/commit/f680da6500344a7d99bd231cebd9cff819275578))
+
 ## [0.2.1](https://github.com/terraform-hc-modules/terraform-hcloud-compute/compare/v0.2.0...v0.2.1) (2026-04-20)
 
 
