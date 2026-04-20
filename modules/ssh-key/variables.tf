@@ -19,8 +19,8 @@ variable "public_key" {
   type        = string
 
   validation {
-    condition     = length(trimspace(var.public_key)) > 0
-    error_message = "The `public_key` value must be a non-empty string."
+    condition     = !var.create || length(trimspace(var.public_key)) > 0
+    error_message = "When `create` is true, `public_key` must be a non-empty string."
   }
 }
 

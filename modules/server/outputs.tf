@@ -37,7 +37,6 @@ output "server" {
     server_type  = hcloud_server.this[0].server_type
     image        = hcloud_server.this[0].image
     location     = hcloud_server.this[0].location
-    datacenter   = hcloud_server.this[0].datacenter
     ipv4_address = hcloud_server.this[0].ipv4_address
     ipv6_address = hcloud_server.this[0].ipv6_address
     labels       = hcloud_server.this[0].labels
