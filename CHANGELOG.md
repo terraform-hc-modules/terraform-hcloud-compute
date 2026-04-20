@@ -1,3 +1,10 @@
+## [0.3.1](https://github.com/terraform-hc-modules/terraform-hcloud-compute/compare/v0.3.0...v0.3.1) (2026-04-20)
+
+
+### Bug Fixes
+
+* make terraform tests pass in CI ([1eb33fe](https://github.com/terraform-hc-modules/terraform-hcloud-compute/commit/1eb33fe06e8228e60d2cc325f73abc8c9175f639))
+
 # [0.3.0](https://github.com/terraform-hc-modules/terraform-hcloud-compute/compare/v0.2.1...v0.3.0) (2026-04-20)
 
 
