@@ -110,6 +110,7 @@ No resources.
 
 | Name | Description | Type | Default | Required |
 | ---- | ----------- | ---- | ------- | :------: |
+| <a name="input_name"></a> [name](#input\_name) | Name of the server. | `string` | n/a | yes |
 | <a name="input_backups"></a> [backups](#input\_backups) | Enable backups. | `bool` | `false` | no |
 | <a name="input_create_placement_group"></a> [create\_placement\_group](#input\_create\_placement\_group) | Whether to create a placement group. | `bool` | `false` | no |
 | <a name="input_create_server"></a> [create\_server](#input\_create\_server) | Whether to create the server. | `bool` | `true` | no |
@@ -119,7 +120,6 @@ No resources.
 | <a name="input_image"></a> [image](#input\_image) | Image to use. | `string` | `"ubuntu-24.04"` | no |
 | <a name="input_labels"></a> [labels](#input\_labels) | Labels to apply. | `map(string)` | `{}` | no |
 | <a name="input_location"></a> [location](#input\_location) | Location. | `string` | `"fsn1"` | no |
-| <a name="input_name"></a> [name](#input\_name) | Name of the server. | `string` | n/a | yes |
 | <a name="input_networks"></a> [networks](#input\_networks) | Networks to attach. | `any` | `[]` | no |
 | <a name="input_placement_group_name"></a> [placement\_group\_name](#input\_placement\_group\_name) | Name of the placement group. | `string` | `null` | no |
 | <a name="input_placement_group_type"></a> [placement\_group\_type](#input\_placement\_group\_type) | Type of the placement group. | `string` | `"spread"` | no |
