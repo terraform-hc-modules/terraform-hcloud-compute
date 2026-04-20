@@ -11,27 +11,23 @@ locals {
 }
 
 ################################################################################
-# Server
+# Compute Module - Server with Snapshot
 ################################################################################
 
-module "server" {
-  source = "../../modules/server"
+module "compute" {
+  source = "../../"
 
   name        = local.name
   server_type = "cx22"
   image       = "ubuntu-24.04"
   location    = "fsn1"
   labels      = local.tags
+
+  # Enable backups for snapshot capability
+  backups = true
 }
 
-################################################################################
-# Snapshot
-################################################################################
-
-module "snapshot" {
-  source = "../../modules/snapshot"
-
-  server_id   = module.server.server_id
-  description = "Snapshot of ${local.name}"
-  labels      = local.tags
+output "server_id" {
+  description = "ID of the server"
+  value       = module.compute.server_id
 }
