@@ -1,3 +1,10 @@
+## [0.2.1](https://github.com/terraform-hc-modules/terraform-hcloud-compute/compare/v0.2.0...v0.2.1) (2026-04-20)
+
+
+### Bug Fixes
+
+* examples now use root module with source = ../../ ([8abb3f1](https://github.com/terraform-hc-modules/terraform-hcloud-compute/commit/8abb3f125b1927776ac06d6938a8268b3759357e))
+
 # [0.2.0](https://github.com/terraform-hc-modules/terraform-hcloud-compute/compare/v0.1.0...v0.2.0) (2026-04-20)
 
 
