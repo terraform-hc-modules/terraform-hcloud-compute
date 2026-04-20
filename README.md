@@ -126,7 +126,7 @@ No resources.
 | <a name="input_image"></a> [image](#input\_image) | Image to use. | `string` | `"ubuntu-24.04"` | no |
 | <a name="input_labels"></a> [labels](#input\_labels) | Labels to apply. | `map(string)` | `{}` | no |
 | <a name="input_location"></a> [location](#input\_location) | Location. | `string` | `"fsn1"` | no |
-| <a name="input_networks"></a> [networks](#input\_networks) | Networks to attach. | `any` | `[]` | no |
+| <a name="input_networks"></a> [networks](#input\_networks) | Networks to attach. | <pre>list(object({<br/>    network_id = number<br/>    ip         = optional(string)<br/>    alias_ips  = optional(list(string), [])<br/>  }))</pre> | `[]` | no |
 | <a name="input_placement_group_name"></a> [placement\_group\_name](#input\_placement\_group\_name) | Name of the placement group. | `string` | `null` | no |
 | <a name="input_placement_group_type"></a> [placement\_group\_type](#input\_placement\_group\_type) | Type of the placement group. | `string` | `"spread"` | no |
 | <a name="input_public_key"></a> [public\_key](#input\_public\_key) | Public key content. | `string` | `""` | no |
@@ -145,11 +145,17 @@ No resources.
 | ---- | ----------- |
 | <a name="output_ipv4_address"></a> [ipv4\_address](#output\_ipv4\_address) | IPv4 address of the server. |
 | <a name="output_ipv6_address"></a> [ipv6\_address](#output\_ipv6\_address) | IPv6 address of the server. |
+| <a name="output_placement_group"></a> [placement\_group](#output\_placement\_group) | Placement group attributes. |
 | <a name="output_placement_group_id"></a> [placement\_group\_id](#output\_placement\_group\_id) | ID of the placement group. |
+| <a name="output_server"></a> [server](#output\_server) | Server attributes. |
 | <a name="output_server_id"></a> [server\_id](#output\_server\_id) | ID of the server. |
 | <a name="output_server_name"></a> [server\_name](#output\_server\_name) | Name of the server. |
+| <a name="output_server_network_attachments"></a> [server\_network\_attachments](#output\_server\_network\_attachments) | Map of server network attachments keyed by index. |
+| <a name="output_server_rdns"></a> [server\_rdns](#output\_server\_rdns) | Map of server reverse DNS entries keyed by index. |
+| <a name="output_ssh_key"></a> [ssh\_key](#output\_ssh\_key) | SSH key attributes. |
 | <a name="output_ssh_key_fingerprint"></a> [ssh\_key\_fingerprint](#output\_ssh\_key\_fingerprint) | Fingerprint of the SSH key. |
 | <a name="output_ssh_key_id"></a> [ssh\_key\_id](#output\_ssh\_key\_id) | ID of the SSH key. |
+| <a name="output_volume"></a> [volume](#output\_volume) | Volume attributes. |
 | <a name="output_volume_id"></a> [volume\_id](#output\_volume\_id) | ID of the volume. |
 | <a name="output_volume_linux_device"></a> [volume\_linux\_device](#output\_volume\_linux\_device) | Linux device path of the volume. |
 <!-- END_TF_DOCS -->
