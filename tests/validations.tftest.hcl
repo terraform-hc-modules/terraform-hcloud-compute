@@ -40,4 +40,3 @@ run "rejects_missing_public_key_when_creating_ssh_key" {
     var.public_key,
   ]
 }
-

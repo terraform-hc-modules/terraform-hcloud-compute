@@ -26,4 +26,3 @@ module "compute" {
   create_placement_group = true
   placement_group_type   = "spread"
 }
-
