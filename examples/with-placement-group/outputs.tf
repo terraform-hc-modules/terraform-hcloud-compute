@@ -7,4 +7,3 @@ output "server" {
   description = "Server attributes"
   value       = module.compute.server
 }
-

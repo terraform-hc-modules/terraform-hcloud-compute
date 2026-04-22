@@ -28,4 +28,3 @@ module "compute" {
   volume_format    = "xfs"
   volume_automount = true
 }
-

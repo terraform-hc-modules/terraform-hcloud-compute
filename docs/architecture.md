@@ -33,4 +33,3 @@ flowchart TD
   PG -. placement_group_id .-> SRV
   SRV -. server_id .-> VOL
 ```
-

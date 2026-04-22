@@ -7,4 +7,3 @@ output "volume" {
   description = "Volume attributes"
   value       = module.compute.volume
 }
-
