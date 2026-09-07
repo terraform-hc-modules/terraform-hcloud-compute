@@ -20,7 +20,7 @@ variable "description" {
   default     = null
 
   validation {
-    condition     = var.description == null || length(trimspace(var.description)) > 0
+    condition     = var.description == null ? true : length(trimspace(var.description)) > 0
     error_message = "If set, `description` must be a non-empty string."
   }
 }

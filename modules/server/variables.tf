@@ -53,7 +53,7 @@ variable "datacenter" {
   default     = null
 
   validation {
-    condition     = var.datacenter == null || length(trimspace(var.datacenter)) > 0
+    condition     = var.datacenter == null ? true : length(trimspace(var.datacenter)) > 0
     error_message = "If set, `datacenter` must be a non-empty string."
   }
 }
@@ -110,7 +110,7 @@ variable "placement_group_id" {
   default     = null
 
   validation {
-    condition     = var.placement_group_id == null || var.placement_group_id > 0
+    condition     = var.placement_group_id == null ? true : var.placement_group_id > 0
     error_message = "If set, `placement_group_id` must be > 0."
   }
 }

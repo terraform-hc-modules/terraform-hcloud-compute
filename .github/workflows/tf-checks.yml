@@ -1,0 +1,66 @@
+name: tf-checks
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  complete-example:
+    uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@v2
+    with:
+      working_directory: './examples/complete/'
+      provider: none
+
+  multiple-servers-example:
+    uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@v2
+    with:
+      working_directory: './examples/multiple-servers/'
+      provider: none
+
+  simple-example:
+    uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@v2
+    with:
+      working_directory: './examples/simple/'
+      provider: none
+
+  snapshot-example:
+    uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@v2
+    with:
+      working_directory: './examples/snapshot/'
+      provider: none
+
+  ssh-key-only-example:
+    uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@v2
+    with:
+      working_directory: './examples/ssh-key-only/'
+      provider: none
+
+  with-cloud-init-example:
+    uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@v2
+    with:
+      working_directory: './examples/with-cloud-init/'
+      provider: none
+
+  with-existing-network-example:
+    uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@v2
+    with:
+      working_directory: './examples/with-existing-network/'
+      provider: none
+
+  with-placement-group-example:
+    uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@v2
+    with:
+      working_directory: './examples/with-placement-group/'
+      provider: none
+
+  with-rdns-example:
+    uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@v2
+    with:
+      working_directory: './examples/with-rdns/'
+      provider: none
+
+  with-volume-example:
+    uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@v2
+    with:
+      working_directory: './examples/with-volume/'
+      provider: none

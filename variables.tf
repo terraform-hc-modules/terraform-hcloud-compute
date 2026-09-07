@@ -140,7 +140,7 @@ variable "ssh_key_name" {
   default     = null
 
   validation {
-    condition     = var.ssh_key_name == null || length(trimspace(var.ssh_key_name)) > 0
+    condition     = var.ssh_key_name == null ? true : length(trimspace(var.ssh_key_name)) > 0
     error_message = "If set, `ssh_key_name` must be a non-empty string."
   }
 }
@@ -172,7 +172,7 @@ variable "volume_name" {
   default     = null
 
   validation {
-    condition     = var.volume_name == null || length(trimspace(var.volume_name)) > 0
+    condition     = var.volume_name == null ? true : length(trimspace(var.volume_name)) > 0
     error_message = "If set, `volume_name` must be a non-empty string."
   }
 }
@@ -194,7 +194,7 @@ variable "volume_format" {
   default     = null
 
   validation {
-    condition     = var.volume_format == null || contains(["ext4", "xfs"], var.volume_format)
+    condition     = var.volume_format == null ? true : contains(["ext4", "xfs"], var.volume_format)
     error_message = "If set, `volume_format` must be one of: ext4, xfs."
   }
 }
@@ -221,7 +221,7 @@ variable "placement_group_name" {
   default     = null
 
   validation {
-    condition     = var.placement_group_name == null || length(trimspace(var.placement_group_name)) > 0
+    condition     = var.placement_group_name == null ? true : length(trimspace(var.placement_group_name)) > 0
     error_message = "If set, `placement_group_name` must be a non-empty string."
   }
 }
@@ -234,5 +234,24 @@ variable "placement_group_type" {
   validation {
     condition     = contains(["spread"], var.placement_group_type)
     error_message = "The `placement_group_type` value must be \"spread\"."
+  }
+}
+
+variable "rdns" {
+  description = "Reverse DNS entries for the server."
+  type = list(object({
+    ip_address = string
+    dns_ptr    = string
+  }))
+  default = []
+
+  validation {
+    condition = alltrue([
+      for r in var.rdns : (
+        (can(cidrhost("${r.ip_address}/32", 0)) || can(cidrhost("${r.ip_address}/128", 0))) &&
+        length(trimspace(r.dns_ptr)) > 0
+      )
+    ])
+    error_message = "`rdns` entries must have a valid `ip_address` and a non-empty `dns_ptr`."
   }
 }

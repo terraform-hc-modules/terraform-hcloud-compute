@@ -41,8 +41,12 @@ module "compute" {
   location    = "fsn1"
   labels      = local.tags
 
-  network_id = module.network.network_id
-  network_ip = "10.0.1.10"
+  networks = [
+    {
+      network_id = module.network.network_id
+      ip         = "10.0.1.10"
+    }
+  ]
 
   create_ssh_key = true
   public_key     = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI... example"
