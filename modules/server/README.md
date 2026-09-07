@@ -45,6 +45,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 | ---- | ----------- | ---- | ------- | :------: |
+| <a name="input_name"></a> [name](#input\_name) | Name of the server. | `string` | n/a | yes |
 | <a name="input_allow_deprecated_images"></a> [allow\_deprecated\_images](#input\_allow\_deprecated\_images) | Allow deprecated images. | `bool` | `false` | no |
 | <a name="input_backups"></a> [backups](#input\_backups) | Enable backups. | `bool` | `false` | no |
 | <a name="input_create"></a> [create](#input\_create) | Whether to create the server. | `bool` | `true` | no |
@@ -55,7 +56,6 @@ No modules.
 | <a name="input_keep_disk"></a> [keep\_disk](#input\_keep\_disk) | Keep disk on server downgrade. | `bool` | `false` | no |
 | <a name="input_labels"></a> [labels](#input\_labels) | Labels to apply to the server. | `map(string)` | `{}` | no |
 | <a name="input_location"></a> [location](#input\_location) | Location of the server. | `string` | `"fsn1"` | no |
-| <a name="input_name"></a> [name](#input\_name) | Name of the server. | `string` | n/a | yes |
 | <a name="input_networks"></a> [networks](#input\_networks) | List of networks to attach. | <pre>list(object({<br/>    network_id = number<br/>    ip         = optional(string)<br/>    alias_ips  = optional(list(string), [])<br/>  }))</pre> | `[]` | no |
 | <a name="input_placement_group_id"></a> [placement\_group\_id](#input\_placement\_group\_id) | Placement group ID. | `number` | `null` | no |
 | <a name="input_public_net"></a> [public\_net](#input\_public\_net) | Public network configuration. | <pre>object({<br/>    ipv4_enabled = optional(bool, true)<br/>    ipv6_enabled = optional(bool, true)<br/>    ipv4         = optional(number)<br/>    ipv6         = optional(number)<br/>  })</pre> | `{}` | no |

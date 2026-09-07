@@ -43,10 +43,10 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 | ---- | ----------- | ---- | ------- | :------: |
+| <a name="input_server_id"></a> [server\_id](#input\_server\_id) | Server ID to create snapshot from. | `number` | n/a | yes |
 | <a name="input_create"></a> [create](#input\_create) | Whether to create the snapshot. | `bool` | `true` | no |
 | <a name="input_description"></a> [description](#input\_description) | Description of the snapshot. | `string` | `null` | no |
 | <a name="input_labels"></a> [labels](#input\_labels) | Labels to apply to the snapshot. | `map(string)` | `{}` | no |
-| <a name="input_server_id"></a> [server\_id](#input\_server\_id) | Server ID to create snapshot from. | `number` | n/a | yes |
 
 ## Outputs
 

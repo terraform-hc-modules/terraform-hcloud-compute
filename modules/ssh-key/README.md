@@ -43,10 +43,10 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 | ---- | ----------- | ---- | ------- | :------: |
-| <a name="input_create"></a> [create](#input\_create) | Whether to create the SSH key. | `bool` | `true` | no |
-| <a name="input_labels"></a> [labels](#input\_labels) | Labels to apply to the SSH key. | `map(string)` | `{}` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name of the SSH key. | `string` | n/a | yes |
 | <a name="input_public_key"></a> [public\_key](#input\_public\_key) | The public key content. | `string` | n/a | yes |
+| <a name="input_create"></a> [create](#input\_create) | Whether to create the SSH key. | `bool` | `true` | no |
+| <a name="input_labels"></a> [labels](#input\_labels) | Labels to apply to the SSH key. | `map(string)` | `{}` | no |
 
 ## Outputs
 

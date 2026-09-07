@@ -43,13 +43,13 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 | ---- | ----------- | ---- | ------- | :------: |
+| <a name="input_name"></a> [name](#input\_name) | Name of the volume. | `string` | n/a | yes |
 | <a name="input_automount"></a> [automount](#input\_automount) | Automount the volume. | `bool` | `false` | no |
 | <a name="input_create"></a> [create](#input\_create) | Whether to create the volume. | `bool` | `true` | no |
 | <a name="input_delete_protection"></a> [delete\_protection](#input\_delete\_protection) | Enable delete protection. | `bool` | `false` | no |
 | <a name="input_format"></a> [format](#input\_format) | Format of the volume (ext4 or xfs). | `string` | `null` | no |
 | <a name="input_labels"></a> [labels](#input\_labels) | Labels to apply to the volume. | `map(string)` | `{}` | no |
 | <a name="input_location"></a> [location](#input\_location) | Location of the volume. | `string` | `"fsn1"` | no |
-| <a name="input_name"></a> [name](#input\_name) | Name of the volume. | `string` | n/a | yes |
 | <a name="input_server_id"></a> [server\_id](#input\_server\_id) | Server ID to attach the volume to. | `number` | `null` | no |
 | <a name="input_size"></a> [size](#input\_size) | Size of the volume in GB. | `number` | `10` | no |
 
