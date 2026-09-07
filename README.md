@@ -130,6 +130,7 @@ No resources.
 | <a name="input_placement_group_name"></a> [placement\_group\_name](#input\_placement\_group\_name) | Name of the placement group. | `string` | `null` | no |
 | <a name="input_placement_group_type"></a> [placement\_group\_type](#input\_placement\_group\_type) | Type of the placement group. | `string` | `"spread"` | no |
 | <a name="input_public_key"></a> [public\_key](#input\_public\_key) | Public key content. | `string` | `""` | no |
+| <a name="input_rdns"></a> [rdns](#input\_rdns) | Reverse DNS entries for the server. | <pre>list(object({<br/>    ip_address = string<br/>    dns_ptr    = string<br/>  }))</pre> | `[]` | no |
 | <a name="input_server_type"></a> [server\_type](#input\_server\_type) | Server type. | `string` | `"cx22"` | no |
 | <a name="input_ssh_key_name"></a> [ssh\_key\_name](#input\_ssh\_key\_name) | Name of the SSH key. | `string` | `null` | no |
 | <a name="input_ssh_keys"></a> [ssh\_keys](#input\_ssh\_keys) | SSH key IDs or names. | `list(string)` | `[]` | no |

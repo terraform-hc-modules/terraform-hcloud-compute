@@ -236,3 +236,22 @@ variable "placement_group_type" {
     error_message = "The `placement_group_type` value must be \"spread\"."
   }
 }
+
+variable "rdns" {
+  description = "Reverse DNS entries for the server."
+  type = list(object({
+    ip_address = string
+    dns_ptr    = string
+  }))
+  default = []
+
+  validation {
+    condition = alltrue([
+      for r in var.rdns : (
+        (can(cidrhost("${r.ip_address}/32", 0)) || can(cidrhost("${r.ip_address}/128", 0))) &&
+        length(trimspace(r.dns_ptr)) > 0
+      )
+    ])
+    error_message = "`rdns` entries must have a valid `ip_address` and a non-empty `dns_ptr`."
+  }
+}

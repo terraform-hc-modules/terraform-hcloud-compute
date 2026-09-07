@@ -46,6 +46,7 @@ module "server" {
   placement_group_id = var.create_placement_group ? module.placement_group.placement_group_id : null
   networks           = var.networks
   backups            = var.backups
+  rdns               = var.rdns
 }
 
 ################################################################################

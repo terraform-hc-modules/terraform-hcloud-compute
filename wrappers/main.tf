@@ -12,6 +12,7 @@ module "wrapper" {
   user_data   = try(each.value.user_data, null)
   networks    = try(each.value.networks, [])
   backups     = try(each.value.backups, false)
+  rdns        = try(each.value.rdns, [])
 
   create_server = try(each.value.create_server, true)
 
@@ -28,15 +29,4 @@ module "wrapper" {
   create_placement_group = try(each.value.create_placement_group, false)
   placement_group_name   = try(each.value.placement_group_name, null)
   placement_group_type   = try(each.value.placement_group_type, "spread")
-}
-
-variable "items" {
-  description = "Map of compute configurations"
-  type        = any
-  default     = {}
-}
-
-output "wrapper" {
-  description = "Map of compute outputs"
-  value       = module.wrapper
 }
