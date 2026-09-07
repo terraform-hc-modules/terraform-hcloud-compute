@@ -60,7 +60,7 @@ variable "server_id" {
   default     = null
 
   validation {
-    condition     = var.server_id == null || var.server_id > 0
+    condition     = var.server_id == null ? true : var.server_id > 0
     error_message = "If set, `server_id` must be > 0."
   }
 }
@@ -77,7 +77,7 @@ variable "format" {
   default     = null
 
   validation {
-    condition     = var.format == null || contains(["ext4", "xfs"], var.format)
+    condition     = var.format == null ? true : contains(["ext4", "xfs"], var.format)
     error_message = "If set, `format` must be one of: ext4, xfs."
   }
 }
