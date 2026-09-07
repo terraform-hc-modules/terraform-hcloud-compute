@@ -43,9 +43,9 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 | ---- | ----------- | ---- | ------- | :------: |
+| <a name="input_name"></a> [name](#input\_name) | Name of the placement group. | `string` | n/a | yes |
 | <a name="input_create"></a> [create](#input\_create) | Whether to create the placement group. | `bool` | `true` | no |
 | <a name="input_labels"></a> [labels](#input\_labels) | Labels to apply to the placement group. | `map(string)` | `{}` | no |
-| <a name="input_name"></a> [name](#input\_name) | Name of the placement group. | `string` | n/a | yes |
 | <a name="input_type"></a> [type](#input\_type) | Type of the placement group (spread). | `string` | `"spread"` | no |
 
 ## Outputs
