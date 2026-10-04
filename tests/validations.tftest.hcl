@@ -40,3 +40,17 @@ run "rejects_missing_public_key_when_creating_ssh_key" {
     var.public_key,
   ]
 }
+
+run "rejects_mismatched_protection" {
+  command = plan
+
+  variables {
+    name               = "test"
+    delete_protection  = true
+    rebuild_protection = false
+  }
+
+  expect_failures = [
+    var.rebuild_protection,
+  ]
+}

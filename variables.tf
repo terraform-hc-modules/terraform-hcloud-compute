@@ -124,6 +124,23 @@ variable "backups" {
   default     = false
 }
 
+variable "delete_protection" {
+  description = "Protect the server from deletion. Hetzner requires the same value for rebuild_protection."
+  type        = bool
+  default     = false
+}
+
+variable "rebuild_protection" {
+  description = "Protect the server from being rebuilt. Hetzner requires the same value for delete_protection."
+  type        = bool
+  default     = false
+
+  validation {
+    condition     = var.rebuild_protection == var.delete_protection
+    error_message = "Hetzner requires delete_protection and rebuild_protection to have the same value."
+  }
+}
+
 ################################################################################
 # SSH Key
 ################################################################################

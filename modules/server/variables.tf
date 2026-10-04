@@ -171,12 +171,6 @@ variable "rebuild_protection" {
   default     = false
 }
 
-variable "allow_deprecated_images" {
-  description = "Allow deprecated images."
-  type        = bool
-  default     = false
-}
-
 variable "shutdown_before_deletion" {
   description = "Shutdown server before deletion."
   type        = bool

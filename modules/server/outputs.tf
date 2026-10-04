@@ -31,16 +31,18 @@ output "network_ips" {
 output "server" {
   description = "Server attributes."
   value = try({
-    id           = hcloud_server.this[0].id
-    name         = hcloud_server.this[0].name
-    status       = hcloud_server.this[0].status
-    server_type  = hcloud_server.this[0].server_type
-    image        = hcloud_server.this[0].image
-    location     = hcloud_server.this[0].location
-    ipv4_address = hcloud_server.this[0].ipv4_address
-    ipv6_address = hcloud_server.this[0].ipv6_address
-    labels       = hcloud_server.this[0].labels
-    backups      = hcloud_server.this[0].backups
+    id                 = hcloud_server.this[0].id
+    name               = hcloud_server.this[0].name
+    status             = hcloud_server.this[0].status
+    server_type        = hcloud_server.this[0].server_type
+    image              = hcloud_server.this[0].image
+    location           = hcloud_server.this[0].location
+    ipv4_address       = hcloud_server.this[0].ipv4_address
+    ipv6_address       = hcloud_server.this[0].ipv6_address
+    labels             = hcloud_server.this[0].labels
+    backups            = hcloud_server.this[0].backups
+    delete_protection  = hcloud_server.this[0].delete_protection
+    rebuild_protection = hcloud_server.this[0].rebuild_protection
   }, null)
 }
 
