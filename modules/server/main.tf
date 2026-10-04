@@ -15,7 +15,6 @@ resource "hcloud_server" "this" {
   keep_disk                = var.keep_disk
   delete_protection        = var.delete_protection
   rebuild_protection       = var.rebuild_protection
-  allow_deprecated_images  = var.allow_deprecated_images
   shutdown_before_deletion = var.shutdown_before_deletion
 
   dynamic "public_net" {

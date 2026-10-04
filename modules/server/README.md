@@ -46,7 +46,6 @@ No modules.
 | Name | Description | Type | Default | Required |
 | ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_name"></a> [name](#input\_name) | Name of the server. | `string` | n/a | yes |
-| <a name="input_allow_deprecated_images"></a> [allow\_deprecated\_images](#input\_allow\_deprecated\_images) | Allow deprecated images. | `bool` | `false` | no |
 | <a name="input_backups"></a> [backups](#input\_backups) | Enable backups. | `bool` | `false` | no |
 | <a name="input_create"></a> [create](#input\_create) | Whether to create the server. | `bool` | `true` | no |
 | <a name="input_datacenter"></a> [datacenter](#input\_datacenter) | Datacenter (alternative to location). | `string` | `null` | no |

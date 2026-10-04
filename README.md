@@ -122,6 +122,7 @@ No resources.
 | <a name="input_create_server"></a> [create\_server](#input\_create\_server) | Whether to create the server. | `bool` | `true` | no |
 | <a name="input_create_ssh_key"></a> [create\_ssh\_key](#input\_create\_ssh\_key) | Whether to create an SSH key. | `bool` | `false` | no |
 | <a name="input_create_volume"></a> [create\_volume](#input\_create\_volume) | Whether to create a volume. | `bool` | `false` | no |
+| <a name="input_delete_protection"></a> [delete\_protection](#input\_delete\_protection) | Protect the server from deletion. Hetzner requires the same value for rebuild\_protection. | `bool` | `false` | no |
 | <a name="input_firewall_ids"></a> [firewall\_ids](#input\_firewall\_ids) | Firewall IDs to attach. | `list(number)` | `[]` | no |
 | <a name="input_image"></a> [image](#input\_image) | Image to use. | `string` | `"ubuntu-24.04"` | no |
 | <a name="input_labels"></a> [labels](#input\_labels) | Labels to apply. | `map(string)` | `{}` | no |
@@ -131,6 +132,7 @@ No resources.
 | <a name="input_placement_group_type"></a> [placement\_group\_type](#input\_placement\_group\_type) | Type of the placement group. | `string` | `"spread"` | no |
 | <a name="input_public_key"></a> [public\_key](#input\_public\_key) | Public key content. | `string` | `""` | no |
 | <a name="input_rdns"></a> [rdns](#input\_rdns) | Reverse DNS entries for the server. | <pre>list(object({<br/>    ip_address = string<br/>    dns_ptr    = string<br/>  }))</pre> | `[]` | no |
+| <a name="input_rebuild_protection"></a> [rebuild\_protection](#input\_rebuild\_protection) | Protect the server from being rebuilt. Hetzner requires the same value for delete\_protection. | `bool` | `false` | no |
 | <a name="input_server_type"></a> [server\_type](#input\_server\_type) | Server type. | `string` | `"cx22"` | no |
 | <a name="input_ssh_key_name"></a> [ssh\_key\_name](#input\_ssh\_key\_name) | Name of the SSH key. | `string` | `null` | no |
 | <a name="input_ssh_keys"></a> [ssh\_keys](#input\_ssh\_keys) | SSH key IDs or names. | `list(string)` | `[]` | no |

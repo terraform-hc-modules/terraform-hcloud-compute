@@ -14,6 +14,9 @@ module "wrapper" {
   backups     = try(each.value.backups, false)
   rdns        = try(each.value.rdns, [])
 
+  delete_protection  = try(each.value.delete_protection, false)
+  rebuild_protection = try(each.value.rebuild_protection, false)
+
   create_server = try(each.value.create_server, true)
 
   create_ssh_key = try(each.value.create_ssh_key, false)

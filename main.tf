@@ -47,6 +47,8 @@ module "server" {
   networks           = var.networks
   backups            = var.backups
   rdns               = var.rdns
+  delete_protection  = var.delete_protection
+  rebuild_protection = var.rebuild_protection
 }
 
 ################################################################################
