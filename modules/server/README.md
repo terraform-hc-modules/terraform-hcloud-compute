@@ -21,13 +21,13 @@ module "server" {
 | Name | Version |
 | ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_hcloud"></a> [hcloud](#requirement\_hcloud) | >= 1.45 |
+| <a name="requirement_hcloud"></a> [hcloud](#requirement\_hcloud) | >= 1.58 |
 
 ## Providers
 
 | Name | Version |
 | ---- | ------- |
-| <a name="provider_hcloud"></a> [hcloud](#provider\_hcloud) | >= 1.45 |
+| <a name="provider_hcloud"></a> [hcloud](#provider\_hcloud) | >= 1.58 |
 
 ## Modules
 
@@ -48,7 +48,6 @@ No modules.
 | <a name="input_name"></a> [name](#input\_name) | Name of the server. | `string` | n/a | yes |
 | <a name="input_backups"></a> [backups](#input\_backups) | Enable backups. | `bool` | `false` | no |
 | <a name="input_create"></a> [create](#input\_create) | Whether to create the server. | `bool` | `true` | no |
-| <a name="input_datacenter"></a> [datacenter](#input\_datacenter) | Datacenter (alternative to location). | `string` | `null` | no |
 | <a name="input_delete_protection"></a> [delete\_protection](#input\_delete\_protection) | Enable delete protection. | `bool` | `false` | no |
 | <a name="input_firewall_ids"></a> [firewall\_ids](#input\_firewall\_ids) | List of firewall IDs to attach. | `list(number)` | `[]` | no |
 | <a name="input_image"></a> [image](#input\_image) | Image to use for the server. | `string` | `"ubuntu-24.04"` | no |

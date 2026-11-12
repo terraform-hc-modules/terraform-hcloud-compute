@@ -47,17 +47,6 @@ variable "location" {
   }
 }
 
-variable "datacenter" {
-  description = "Datacenter (alternative to location)."
-  type        = string
-  default     = null
-
-  validation {
-    condition     = var.datacenter == null ? true : length(trimspace(var.datacenter)) > 0
-    error_message = "If set, `datacenter` must be a non-empty string."
-  }
-}
-
 variable "labels" {
   description = "Labels to apply to the server."
   type        = map(string)
