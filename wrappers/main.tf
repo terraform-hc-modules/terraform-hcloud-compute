@@ -11,11 +11,17 @@ module "wrapper" {
   ssh_keys    = try(each.value.ssh_keys, [])
   user_data   = try(each.value.user_data, null)
   networks    = try(each.value.networks, [])
+  network     = try(each.value.network, [])
+  iso         = try(each.value.iso, null)
+  rescue      = try(each.value.rescue, null)
   backups     = try(each.value.backups, false)
   rdns        = try(each.value.rdns, [])
 
   delete_protection  = try(each.value.delete_protection, false)
   rebuild_protection = try(each.value.rebuild_protection, false)
+
+  ignore_remote_firewall_ids = try(each.value.ignore_remote_firewall_ids, false)
+  server_timeouts            = try(each.value.server_timeouts, null)
 
   create_server = try(each.value.create_server, true)
 

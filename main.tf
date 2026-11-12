@@ -45,10 +45,16 @@ module "server" {
   firewall_ids       = var.firewall_ids
   placement_group_id = var.create_placement_group ? module.placement_group.placement_group_id : null
   networks           = var.networks
+  network            = var.network
+  iso                = var.iso
+  rescue             = var.rescue
+  timeouts           = var.server_timeouts
   backups            = var.backups
   rdns               = var.rdns
   delete_protection  = var.delete_protection
   rebuild_protection = var.rebuild_protection
+
+  ignore_remote_firewall_ids = var.ignore_remote_firewall_ids
 }
 
 ################################################################################
