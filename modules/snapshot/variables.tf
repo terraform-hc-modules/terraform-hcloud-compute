@@ -42,3 +42,11 @@ variable "labels" {
     error_message = "The `labels` map keys must match ^[A-Za-z0-9][A-Za-z0-9_.-]{0,62}$ (max 63 chars). Label values must be <= 63 chars."
   }
 }
+
+variable "timeouts" {
+  description = "Timeouts for the snapshot (e.g., { create = \"30m\" })."
+  type = object({
+    create = optional(string)
+  })
+  default = null
+}

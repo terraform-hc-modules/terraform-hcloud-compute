@@ -9,6 +9,7 @@ This module provisions a Hetzner Cloud server and optional supporting resources 
 - **`modules/placement-group`**: Creates an `hcloud_placement_group` when enabled.
 - **`modules/server`**: Creates the `hcloud_server` plus optional `hcloud_server_network` attachments and `hcloud_rdns` entries.
 - **`modules/volume`**: Creates an `hcloud_volume` and attaches it to the server when enabled.
+- **`modules/volume-attachment`**: Standalone `hcloud_volume_attachment` for attaching an existing volume to a server. Not wired into the root module.
 
 ## Mermaid diagram
 

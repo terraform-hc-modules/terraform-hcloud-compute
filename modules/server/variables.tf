@@ -47,17 +47,6 @@ variable "location" {
   }
 }
 
-variable "datacenter" {
-  description = "Datacenter (alternative to location)."
-  type        = string
-  default     = null
-
-  validation {
-    condition     = var.datacenter == null ? true : length(trimspace(var.datacenter)) > 0
-    error_message = "If set, `datacenter` must be a non-empty string."
-  }
-}
-
 variable "labels" {
   description = "Labels to apply to the server."
   type        = map(string)
@@ -118,7 +107,8 @@ variable "placement_group_id" {
 variable "networks" {
   description = "List of networks to attach."
   type = list(object({
-    network_id = number
+    network_id = optional(number)
+    subnet_id  = optional(string)
     ip         = optional(string)
     alias_ips  = optional(list(string), [])
   }))
@@ -127,12 +117,34 @@ variable "networks" {
   validation {
     condition = alltrue([
       for n in var.networks : (
-        n.network_id > 0 &&
+        (try(n.network_id > 0, false) || try(length(trimspace(n.subnet_id)) > 0, false)) &&
         (try(n.ip, null) == null || can(cidrhost("${n.ip}/32", 0)) || can(cidrhost("${n.ip}/128", 0))) &&
         alltrue([for ip in try(n.alias_ips, []) : can(cidrhost("${ip}/32", 0)) || can(cidrhost("${ip}/128", 0))])
       )
     ])
-    error_message = "Each network attachment must set `network_id` > 0. Optional `ip` and `alias_ips` must be valid IP addresses."
+    error_message = "Each network attachment must set `network_id` > 0 or a non-empty `subnet_id`. Optional `ip` and `alias_ips` must be valid IP addresses."
+  }
+}
+
+variable "network" {
+  description = "Networks attached inline on the server (hcloud_server network block), applied at creation. Do not combine with `networks` for the same network."
+  type = list(object({
+    network_id = optional(number)
+    subnet_id  = optional(string)
+    ip         = optional(string)
+    alias_ips  = optional(list(string), [])
+  }))
+  default = []
+
+  validation {
+    condition = alltrue([
+      for n in var.network : (
+        (try(n.network_id > 0, false) || try(length(trimspace(n.subnet_id)) > 0, false)) &&
+        (try(n.ip, null) == null || can(cidrhost("${n.ip}/32", 0)) || can(cidrhost("${n.ip}/128", 0))) &&
+        alltrue([for ip in try(n.alias_ips, []) : can(cidrhost("${ip}/32", 0)) || can(cidrhost("${ip}/128", 0))])
+      )
+    ])
+    error_message = "Each `network` entry must set `network_id` > 0 or a non-empty `subnet_id`. Optional `ip` and `alias_ips` must be valid IP addresses."
   }
 }
 
@@ -194,4 +206,40 @@ variable "rdns" {
     ])
     error_message = "`rdns` entries must have a valid `ip_address` and a non-empty `dns_ptr`."
   }
+}
+
+variable "iso" {
+  description = "ID or name of an ISO image to mount on the server."
+  type        = string
+  default     = null
+
+  validation {
+    condition     = var.iso == null ? true : length(trimspace(var.iso)) > 0
+    error_message = "If set, `iso` must be a non-empty string."
+  }
+}
+
+variable "rescue" {
+  description = "Rescue system to boot into (e.g., linux64)."
+  type        = string
+  default     = null
+
+  validation {
+    condition     = var.rescue == null ? true : length(trimspace(var.rescue)) > 0
+    error_message = "If set, `rescue` must be a non-empty string."
+  }
+}
+
+variable "ignore_remote_firewall_ids" {
+  description = "Ignore firewalls attached to the server outside of this module (e.g., via hcloud_firewall_attachment)."
+  type        = bool
+  default     = false
+}
+
+variable "timeouts" {
+  description = "Timeouts for the server (e.g., { create = \"30m\" })."
+  type = object({
+    create = optional(string)
+  })
+  default = null
 }

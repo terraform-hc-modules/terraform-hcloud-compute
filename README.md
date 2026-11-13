@@ -1,6 +1,6 @@
 # Hetzner Cloud Compute Module
 
-[![Terraform](https://img.shields.io/badge/Terraform-%3E%3D1.0-blueviolet)](https://www.terraform.io/)
+[![Terraform](https://img.shields.io/badge/Terraform-%3E%3D1.10-blueviolet)](https://www.terraform.io/)
 [![License: MPL-2.0](https://img.shields.io/badge/License-MPL--2.0-blue.svg)](https://opensource.org/licenses/MPL-2.0)
 [![CI](https://github.com/terraform-hc-modules/terraform-hcloud-compute/actions/workflows/ci.yml/badge.svg)](https://github.com/terraform-hc-modules/terraform-hcloud-compute/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/terraform-hc-modules/terraform-hcloud-compute)](https://github.com/terraform-hc-modules/terraform-hcloud-compute/releases)
@@ -77,6 +77,7 @@ module "volume" {
 |--------|-------------|
 | [server](modules/server) | Server with network attachments and rDNS |
 | [volume](modules/volume) | Block storage volumes |
+| [volume-attachment](modules/volume-attachment) | Attach an existing volume to a server |
 | [ssh-key](modules/ssh-key) | SSH keys |
 | [placement-group](modules/placement-group) | Anti-affinity groups |
 | [snapshot](modules/snapshot) | Server snapshots |
@@ -93,7 +94,7 @@ module "volume" {
 | Name | Version |
 | ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.10.0 |
-| <a name="requirement_hcloud"></a> [hcloud](#requirement\_hcloud) | >= 1.45 |
+| <a name="requirement_hcloud"></a> [hcloud](#requirement\_hcloud) | >= 1.58 |
 
 ## Providers
 
@@ -124,15 +125,20 @@ No resources.
 | <a name="input_create_volume"></a> [create\_volume](#input\_create\_volume) | Whether to create a volume. | `bool` | `false` | no |
 | <a name="input_delete_protection"></a> [delete\_protection](#input\_delete\_protection) | Protect the server from deletion. Hetzner requires the same value for rebuild\_protection. | `bool` | `false` | no |
 | <a name="input_firewall_ids"></a> [firewall\_ids](#input\_firewall\_ids) | Firewall IDs to attach. | `list(number)` | `[]` | no |
+| <a name="input_ignore_remote_firewall_ids"></a> [ignore\_remote\_firewall\_ids](#input\_ignore\_remote\_firewall\_ids) | Ignore firewalls attached to the server outside of this module (e.g., via hcloud\_firewall\_attachment). | `bool` | `false` | no |
 | <a name="input_image"></a> [image](#input\_image) | Image to use. | `string` | `"ubuntu-24.04"` | no |
+| <a name="input_iso"></a> [iso](#input\_iso) | ID or name of an ISO image to mount on the server. | `string` | `null` | no |
 | <a name="input_labels"></a> [labels](#input\_labels) | Labels to apply. | `map(string)` | `{}` | no |
 | <a name="input_location"></a> [location](#input\_location) | Location. | `string` | `"fsn1"` | no |
-| <a name="input_networks"></a> [networks](#input\_networks) | Networks to attach. | <pre>list(object({<br/>    network_id = number<br/>    ip         = optional(string)<br/>    alias_ips  = optional(list(string), [])<br/>  }))</pre> | `[]` | no |
+| <a name="input_network"></a> [network](#input\_network) | Networks attached inline on the server (hcloud\_server network block), applied at creation. Do not combine with `networks` for the same network. | <pre>list(object({<br/>    network_id = optional(number)<br/>    subnet_id  = optional(string)<br/>    ip         = optional(string)<br/>    alias_ips  = optional(list(string), [])<br/>  }))</pre> | `[]` | no |
+| <a name="input_networks"></a> [networks](#input\_networks) | Networks to attach. | <pre>list(object({<br/>    network_id = optional(number)<br/>    subnet_id  = optional(string)<br/>    ip         = optional(string)<br/>    alias_ips  = optional(list(string), [])<br/>  }))</pre> | `[]` | no |
 | <a name="input_placement_group_name"></a> [placement\_group\_name](#input\_placement\_group\_name) | Name of the placement group. | `string` | `null` | no |
 | <a name="input_placement_group_type"></a> [placement\_group\_type](#input\_placement\_group\_type) | Type of the placement group. | `string` | `"spread"` | no |
 | <a name="input_public_key"></a> [public\_key](#input\_public\_key) | Public key content. | `string` | `""` | no |
 | <a name="input_rdns"></a> [rdns](#input\_rdns) | Reverse DNS entries for the server. | <pre>list(object({<br/>    ip_address = string<br/>    dns_ptr    = string<br/>  }))</pre> | `[]` | no |
 | <a name="input_rebuild_protection"></a> [rebuild\_protection](#input\_rebuild\_protection) | Protect the server from being rebuilt. Hetzner requires the same value for delete\_protection. | `bool` | `false` | no |
+| <a name="input_rescue"></a> [rescue](#input\_rescue) | Rescue system to boot into (e.g., linux64). | `string` | `null` | no |
+| <a name="input_server_timeouts"></a> [server\_timeouts](#input\_server\_timeouts) | Timeouts for the server (e.g., { create = "30m" }). | <pre>object({<br/>    create = optional(string)<br/>  })</pre> | `null` | no |
 | <a name="input_server_type"></a> [server\_type](#input\_server\_type) | Server type. | `string` | `"cx22"` | no |
 | <a name="input_ssh_key_name"></a> [ssh\_key\_name](#input\_ssh\_key\_name) | Name of the SSH key. | `string` | `null` | no |
 | <a name="input_ssh_keys"></a> [ssh\_keys](#input\_ssh\_keys) | SSH key IDs or names. | `list(string)` | `[]` | no |

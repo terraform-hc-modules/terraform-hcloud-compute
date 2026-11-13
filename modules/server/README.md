@@ -21,13 +21,13 @@ module "server" {
 | Name | Version |
 | ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_hcloud"></a> [hcloud](#requirement\_hcloud) | >= 1.45 |
+| <a name="requirement_hcloud"></a> [hcloud](#requirement\_hcloud) | >= 1.58 |
 
 ## Providers
 
 | Name | Version |
 | ---- | ------- |
-| <a name="provider_hcloud"></a> [hcloud](#provider\_hcloud) | >= 1.45 |
+| <a name="provider_hcloud"></a> [hcloud](#provider\_hcloud) | >= 1.58 |
 
 ## Modules
 
@@ -48,21 +48,25 @@ No modules.
 | <a name="input_name"></a> [name](#input\_name) | Name of the server. | `string` | n/a | yes |
 | <a name="input_backups"></a> [backups](#input\_backups) | Enable backups. | `bool` | `false` | no |
 | <a name="input_create"></a> [create](#input\_create) | Whether to create the server. | `bool` | `true` | no |
-| <a name="input_datacenter"></a> [datacenter](#input\_datacenter) | Datacenter (alternative to location). | `string` | `null` | no |
 | <a name="input_delete_protection"></a> [delete\_protection](#input\_delete\_protection) | Enable delete protection. | `bool` | `false` | no |
 | <a name="input_firewall_ids"></a> [firewall\_ids](#input\_firewall\_ids) | List of firewall IDs to attach. | `list(number)` | `[]` | no |
+| <a name="input_ignore_remote_firewall_ids"></a> [ignore\_remote\_firewall\_ids](#input\_ignore\_remote\_firewall\_ids) | Ignore firewalls attached to the server outside of this module (e.g., via hcloud\_firewall\_attachment). | `bool` | `false` | no |
 | <a name="input_image"></a> [image](#input\_image) | Image to use for the server. | `string` | `"ubuntu-24.04"` | no |
+| <a name="input_iso"></a> [iso](#input\_iso) | ID or name of an ISO image to mount on the server. | `string` | `null` | no |
 | <a name="input_keep_disk"></a> [keep\_disk](#input\_keep\_disk) | Keep disk on server downgrade. | `bool` | `false` | no |
 | <a name="input_labels"></a> [labels](#input\_labels) | Labels to apply to the server. | `map(string)` | `{}` | no |
 | <a name="input_location"></a> [location](#input\_location) | Location of the server. | `string` | `"fsn1"` | no |
-| <a name="input_networks"></a> [networks](#input\_networks) | List of networks to attach. | <pre>list(object({<br/>    network_id = number<br/>    ip         = optional(string)<br/>    alias_ips  = optional(list(string), [])<br/>  }))</pre> | `[]` | no |
+| <a name="input_network"></a> [network](#input\_network) | Networks attached inline on the server (hcloud\_server network block), applied at creation. Do not combine with `networks` for the same network. | <pre>list(object({<br/>    network_id = optional(number)<br/>    subnet_id  = optional(string)<br/>    ip         = optional(string)<br/>    alias_ips  = optional(list(string), [])<br/>  }))</pre> | `[]` | no |
+| <a name="input_networks"></a> [networks](#input\_networks) | List of networks to attach. | <pre>list(object({<br/>    network_id = optional(number)<br/>    subnet_id  = optional(string)<br/>    ip         = optional(string)<br/>    alias_ips  = optional(list(string), [])<br/>  }))</pre> | `[]` | no |
 | <a name="input_placement_group_id"></a> [placement\_group\_id](#input\_placement\_group\_id) | Placement group ID. | `number` | `null` | no |
 | <a name="input_public_net"></a> [public\_net](#input\_public\_net) | Public network configuration. | <pre>object({<br/>    ipv4_enabled = optional(bool, true)<br/>    ipv6_enabled = optional(bool, true)<br/>    ipv4         = optional(number)<br/>    ipv6         = optional(number)<br/>  })</pre> | `{}` | no |
 | <a name="input_rdns"></a> [rdns](#input\_rdns) | Reverse DNS entries. | <pre>list(object({<br/>    ip_address = string<br/>    dns_ptr    = string<br/>  }))</pre> | `[]` | no |
 | <a name="input_rebuild_protection"></a> [rebuild\_protection](#input\_rebuild\_protection) | Enable rebuild protection. | `bool` | `false` | no |
+| <a name="input_rescue"></a> [rescue](#input\_rescue) | Rescue system to boot into (e.g., linux64). | `string` | `null` | no |
 | <a name="input_server_type"></a> [server\_type](#input\_server\_type) | Server type (e.g., cx22, cpx11). | `string` | `"cx22"` | no |
 | <a name="input_shutdown_before_deletion"></a> [shutdown\_before\_deletion](#input\_shutdown\_before\_deletion) | Shutdown server before deletion. | `bool` | `false` | no |
 | <a name="input_ssh_keys"></a> [ssh\_keys](#input\_ssh\_keys) | List of SSH key IDs or names. | `list(string)` | `[]` | no |
+| <a name="input_timeouts"></a> [timeouts](#input\_timeouts) | Timeouts for the server (e.g., { create = "30m" }). | <pre>object({<br/>    create = optional(string)<br/>  })</pre> | `null` | no |
 | <a name="input_user_data"></a> [user\_data](#input\_user\_data) | Cloud-init user data. | `string` | `null` | no |
 
 ## Outputs
