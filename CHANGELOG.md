@@ -1,3 +1,19 @@
+## [0.6.0](https://github.com/terraform-hc-modules/terraform-hcloud-compute/compare/v0.5.0...v0.6.0) (2026-11-13)
+
+### Breaking changes
+
+* `modules/server` drops the `datacenter` input (removed from the Hetzner API on 2026-07-01 and from hcloud provider v1.67.0); `location` is always passed
+* hcloud provider floor raised to `>= 1.58`
+
+### Features
+
+* `modules/server`, root and wrapper: `network` (inline network block with `network_id` or `subnet_id`, `ip`, `alias_ips`), `iso`, `rescue`, `ignore_remote_firewall_ids`, `timeouts` (`server_timeouts` on the root)
+* `networks` gains `subnet_id`; `network_id` is optional when `subnet_id` is set
+* `modules/snapshot`: `timeouts`
+* new `modules/volume-attachment` for `hcloud_volume_attachment`
+
+[#10](https://github.com/terraform-hc-modules/terraform-hcloud-compute/pull/10), [#11](https://github.com/terraform-hc-modules/terraform-hcloud-compute/pull/11), closes [#9](https://github.com/terraform-hc-modules/terraform-hcloud-compute/issues/9)
+
 ## [0.3.1](https://github.com/terraform-hc-modules/terraform-hcloud-compute/compare/v0.3.0...v0.3.1) (2026-04-20)
 
 
