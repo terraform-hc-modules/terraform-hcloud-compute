@@ -15,6 +15,10 @@ resource "hcloud_server" "this" {
   delete_protection        = var.delete_protection
   rebuild_protection       = var.rebuild_protection
   shutdown_before_deletion = var.shutdown_before_deletion
+  iso                      = var.iso
+  rescue                   = var.rescue
+
+  ignore_remote_firewall_ids = var.ignore_remote_firewall_ids
 
   dynamic "public_net" {
     for_each = length(var.public_net) > 0 ? [var.public_net] : []
@@ -23,6 +27,23 @@ resource "hcloud_server" "this" {
       ipv6_enabled = public_net.value.ipv6_enabled
       ipv4         = public_net.value.ipv4
       ipv6         = public_net.value.ipv6
+    }
+  }
+
+  dynamic "network" {
+    for_each = var.network
+    content {
+      network_id = network.value.network_id
+      subnet_id  = network.value.subnet_id
+      ip         = network.value.ip
+      alias_ips  = network.value.alias_ips
+    }
+  }
+
+  dynamic "timeouts" {
+    for_each = var.timeouts == null ? [] : [var.timeouts]
+    content {
+      create = timeouts.value.create
     }
   }
 
@@ -39,6 +60,7 @@ resource "hcloud_server_network" "this" {
 
   server_id  = hcloud_server.this[0].id
   network_id = each.value.network_id
+  subnet_id  = each.value.subnet_id
   ip         = each.value.ip
   alias_ips  = each.value.alias_ips
 }

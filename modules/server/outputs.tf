@@ -43,6 +43,13 @@ output "server" {
     backups            = hcloud_server.this[0].backups
     delete_protection  = hcloud_server.this[0].delete_protection
     rebuild_protection = hcloud_server.this[0].rebuild_protection
+    network = [for n in hcloud_server.this[0].network : {
+      network_id  = n.network_id
+      subnet_id   = n.subnet_id
+      ip          = n.ip
+      alias_ips   = n.alias_ips
+      mac_address = n.mac_address
+    }]
   }, null)
 }
 
@@ -52,6 +59,7 @@ output "network_attachments" {
     for k, v in hcloud_server_network.this : k => {
       id         = try(v.id, null)
       network_id = v.network_id
+      subnet_id  = v.subnet_id
       ip         = v.ip
       alias_ips  = v.alias_ips
     }
